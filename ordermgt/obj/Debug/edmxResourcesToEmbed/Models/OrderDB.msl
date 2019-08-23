@@ -4,6 +4,9 @@
     <EntitySetMapping Name="categories">
       <EntityTypeMapping TypeName="ordermangementDBModel.category">
         <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="cat_driver" ColumnName="cat_driver" />
+          <ScalarProperty Name="cat_date" ColumnName="cat_date" />
+          <ScalarProperty Name="cat_product" ColumnName="cat_product" />
           <ScalarProperty Name="cat_id" ColumnName="cat_id" />
           <ScalarProperty Name="cat_name" ColumnName="cat_name" />
           <ScalarProperty Name="cat_status" ColumnName="cat_status" />

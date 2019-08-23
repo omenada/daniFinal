@@ -7,6 +7,10 @@
     <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="cat_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="cat_status" Type="Byte" Nullable="false" />
+    <Property Name="cat_product" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="cat_date" Type="DateTime" Precision="3" />
+    <Property Name="cat_driver" Type="Int32" />
+    <NavigationProperty Name="user" Relationship="ordermangementDBModel.FK_cat_driver" FromRole="category" ToRole="user" />
   </EntityType>
   <EntityType Name="role">
     <Key>
@@ -30,6 +34,7 @@
     <Property Name="u_status" Type="Byte" Nullable="false" />
     <Property Name="u_roleid" Type="Int32" Nullable="false" />
     <NavigationProperty Name="role" Relationship="Self.FK__users__u_roleid__37A5467C" FromRole="users" ToRole="roles" />
+    <NavigationProperty Name="categories" Relationship="ordermangementDBModel.FK_cat_driver" FromRole="user" ToRole="category" />
   </EntityType>
   <Association Name="FK__users__u_roleid__37A5467C">
     <End Role="roles" Type="Self.role" Multiplicity="1">
@@ -53,5 +58,21 @@
       <End Role="roles" EntitySet="roles" />
       <End Role="users" EntitySet="users" />
     </AssociationSet>
+    <AssociationSet Name="FK_cat_driver" Association="ordermangementDBModel.FK_cat_driver">
+      <End Role="user" EntitySet="users" />
+      <End Role="category" EntitySet="categories" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_cat_driver">
+    <End Type="ordermangementDBModel.user" Role="user" Multiplicity="0..1" />
+    <End Type="ordermangementDBModel.category" Role="category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="category">
+        <PropertyRef Name="cat_driver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

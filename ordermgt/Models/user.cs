@@ -15,42 +15,46 @@ namespace ordermgt.Models
 
     public partial class user
     {
-        [Key]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user()
+        {
+            this.categories = new HashSet<category>();
+        }
+    
         public int u_id { get; set; }
 
         [Display(Name = "Name")]
-        [Required(ErrorMessage = "this field is required.")]
+        [Required(ErrorMessage = "required information!")]
         public string u_name { get; set; }
-
         [Display(Name = "UserName")]
-        [Required(ErrorMessage = "this field is required.")]
-      
+        [Required(ErrorMessage = "required information!")]
         public string u_username { get; set; }
 
         [Display(Name = "Password")]
-        [Required(ErrorMessage = "this field is required.")]
-        [DataType (DataType.Password)]
-       
+        [Required(ErrorMessage = "required information!")]
+        [DataType(DataType.Password)]
         public string u_password { get; set; }
-
+        
         [Display(Name = "Phone")]
         [Required(ErrorMessage = "*")]
-
         public string u_phone { get; set; }
 
-        [Display(Name = "Email")]
+        [Display(Name = "email")]
         [Required(ErrorMessage = "*")]
-
         public string u_email { get; set; }
-
-        [Display(Name = "Status")]
+        [Display(Name = "Position")]
         [Required(ErrorMessage = "*")]
         public byte u_status { get; set; }
 
-        [Display(Name = "Position")]
+        [Display(Name = "Phone")]
         [Required(ErrorMessage = "*")]
         public int u_roleid { get; set; }
 
+
+        [Display(Name = "Position")]
+        [Required(ErrorMessage = "*")]
         public virtual role role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<category> categories { get; set; }
     }
 }

@@ -20,18 +20,17 @@ namespace ordermgt.Models
         {
             this.users = new HashSet<user>();
         }
-
-        [Key]
-
+    
         public int r_id { get; set; }
 
-        [Display(Name = "Role")]
+        [Display(Name = "Role ")]
         [Required(ErrorMessage = "*")]
         public string r_name { get; set; }
-        [Display(Name = "Status")]
+
+        [Display(Name = "Status of admin")]
         [Required(ErrorMessage = "*")]
         public byte r_status { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user> users { get; set; }
     }

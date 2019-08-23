@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tracking</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -16,6 +16,20 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.cat_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cat_driver)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cat_product)
+
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cat_date)
+
+
         </th>
         <th></th>
     </tr>

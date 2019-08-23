@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="ordermangementDBModel.role" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ordermangementDBModel.user" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="ordermangementDBModel.FK__users__u_roleid__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="ordermangementDBModel.FK_cat_driver" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

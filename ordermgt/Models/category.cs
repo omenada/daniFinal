@@ -15,16 +15,28 @@ namespace ordermgt.Models
 
     public partial class category
     {
-        [Key]
-
         public int cat_id { get; set; }
 
-        [Display(Name = "Category Name")]
+        [Display(Name = "Order")]
         [Required(ErrorMessage = "*")]
         public string cat_name { get; set; }
 
-        [Display(Name = "Status")]
+        [Display(Name = "Delivery Status")]
         [Required(ErrorMessage = "*")]
         public byte cat_status { get; set; }
+
+        [Display(Name = "Product")]
+        [Required(ErrorMessage = "*")]
+        public string cat_product { get; set; }
+
+
+        [Display(Name = "Date")]
+        [Required(ErrorMessage = "*")]
+        [DisplayFormat(DataFormatString = "(00:d)")]// data format 
+        public Nullable<System.DateTime> cat_date { get; set; }
+
+        public Nullable<int> cat_driver { get; set; }
+    
+        public virtual user user { get; set; }
     }
 }

@@ -13,8 +13,7 @@ namespace ordermgt.Controllers
     public class usersController : Controller
     {
         private ordermangementDBEntities db = new ordermangementDBEntities();
-        internal object u_password;
-        internal object u_username;
+     
 
         // GET: users
         public ActionResult Index()
@@ -41,7 +40,7 @@ namespace ordermgt.Controllers
         // GET: users/Create
         public ActionResult Create()
         {
-            ViewBag.u_roleid = new SelectList(db.roles, "r_id", "r_name");
+            ViewBag.u_roleid = new SelectList(db.roles, "r_id", "r_name","r_idrole");
             return View();
         }
 
@@ -59,7 +58,7 @@ namespace ordermgt.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.u_roleid = new SelectList(db.roles, "r_id", "r_name", user.u_roleid);
+            ViewBag.u_roleid = new SelectList(db.roles, "r_id", "r_name");
             return View(user);
         }
 
@@ -75,7 +74,7 @@ namespace ordermgt.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.u_roleid = new SelectList(db.roles, "r_id", "r_name", user.u_roleid);
+            ViewBag.u_roleid = new SelectList(db.roles, "r_id", "r_name");
             return View(user);
         }
 
@@ -92,7 +91,7 @@ namespace ordermgt.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.u_roleid = new SelectList(db.roles, "r_id", "r_name", user.u_roleid);
+            ViewBag.u_roleid = new SelectList(db.roles, "r_id", "r_name");
             return View(user);
         }
 

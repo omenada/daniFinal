@@ -7,6 +7,9 @@
     <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cat_name" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="cat_status" Type="tinyint" Nullable="false" />
+    <Property Name="cat_product" Type="varchar" MaxLength="30" />
+    <Property Name="cat_date" Type="datetime" />
+    <Property Name="cat_driver" Type="int" />
   </EntityType>
   <EntityType Name="roles">
     <Key>
@@ -43,6 +46,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_cat_driver">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="categories" Type="Self.categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="categories">
+        <PropertyRef Name="cat_driver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ordermangementDBModelStoreContainer">
     <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
@@ -50,6 +65,10 @@
     <AssociationSet Name="FK__users__u_roleid__37A5467C" Association="Self.FK__users__u_roleid__37A5467C">
       <End Role="roles" EntitySet="roles" />
       <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cat_driver" Association="Self.FK_cat_driver">
+      <End Role="users" EntitySet="users" />
+      <End Role="categories" EntitySet="categories" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
