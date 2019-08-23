@@ -39,7 +39,7 @@ namespace ordermgt.Controllers
             {
                 Session["isLogged"] = "false";
                 connecLOGIN.Open();
-                string queryLogin = "SELECT u_password FROM users WHERE u_username ='" + userNameLOGIN + "';";
+                string queryLogin = "SELECT u_password FROM users WHERE u_username ='" + passWordLOGIN + "';";
 
                 SqlCommand commLOGIN = new SqlCommand(queryLogin, connecLOGIN);
                 SqlDataReader ResultOfTheSelect = commLOGIN.ExecuteReader();
